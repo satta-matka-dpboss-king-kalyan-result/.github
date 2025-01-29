@@ -23,4 +23,4 @@ jobs:
           author_name: "GitHub Actions"
           author_email: "actions@github.com"
           message: "Update title with today's date"
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
