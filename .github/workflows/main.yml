@@ -1,0 +1,25 @@
+name: Update Date in Title
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # This triggers the action daily at midnight UTC
+  workflow_dispatch:
+
+jobs:
+  update-title:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Update the title with today's date
+        run: |
+          echo "Satta Matka DpBoss King Kalyan Result [LIVE] $(date +'%d/%m/%Y') : ये लकी लोग रातों-रात बने करोड़पति, देखें विनिंग नंबर" > title.txt
+          
+      - name: Commit and push changes
+        uses: EndBug/add-and-commit@v7
+        with:
+          author_name: "GitHub Actions"
+          author_email: "actions@github.com"
+          message: "Update title with today's date"
