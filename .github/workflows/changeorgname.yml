@@ -10,16 +10,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Set today's date as the display name
+      - name: Set today's date as the organization display name
         run: |
           # Get today's date in the format "DD/MM/YYYY"
           DISPLAY_NAME="Satta Matka DpBoss King Kalyan Result [LIVE] $(date +'%d/%m/%Y') : ये लकी लोग रातों-रात बने करोड़पति, देखें विनिंग नंबर"
-
+          
           # Update the organization's display name using GitHub API
-          curl -X PATCH \
+          RESPONSE=$(curl -s -o response.json -w "%{http_code}" -X PATCH \
             -H "Authorization: Bearer ${{ secrets.ORG_ACCESS_TOKEN }}" \
             -H "Accept: application/vnd.github.v3+json" \
             -d "{\"name\":\"$DISPLAY_NAME\"}" \
-            https://api.github.com/orgs/satta-matka-dpboss-king-kalyan-result
-        env:
-          DISPLAY_NAME: ""
+            https://api.github.com/orgs/satta-matka-dpboss-king-kalyan-result)
+          
+          # Output the response for debugging
+          echo "Response HTTP Code: $RESPONSE"
+          cat response.json
