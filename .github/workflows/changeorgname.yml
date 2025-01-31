@@ -20,6 +20,6 @@ jobs:
             -H "Authorization: Bearer ${{ secrets.ORG_ACCESS_TOKEN }}" \
             -H "Accept: application/vnd.github.v3+json" \
             -d "{\"name\":\"$DISPLAY_NAME\"}" \
-            https://api.github.com/orgs/your-org-name
+            https://api.github.com/orgs/satta-matka-dpboss-king-kalyan-result
         env:
           DISPLAY_NAME: ""
